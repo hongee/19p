@@ -1,9 +1,12 @@
 Notes
 ===
-##!! IMPORTANT !!
+
+### IMPORTANT
 - Edit `./app` for Frontend
 - `localhost:9000` DOES NOT have access to the Backend
 - `localhost:8080` reads from `dist`, and doesn't update without running `gulp`
+
+---
 
 1. `npm install` - Install Backend/Dev Dependencies
 2. `bower install` - Install Frontend Dependencies
