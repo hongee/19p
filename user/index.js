@@ -5,13 +5,15 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.json({
+    hello: 'world'
+  })
 });
 
 module.exports = router;
 
 /*
-app.get('/api/todos', function(req, res) {
+router.get('/api/todos', function(req, res) {
 
     // use mongoose to get all todos in the database
     Todo.find(function(err, todos) {
