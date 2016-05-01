@@ -6,7 +6,10 @@ var router = express.Router();
 //make schema and model here
 var salesSchema = mongoose.Schema({
   quantity: Number,
-  location: String,
+  location: {
+    type: String,
+    enum: ['BPlate','Feast','De Neve', 'Covel', 'Rende', '1919', 'Bcafe']
+    },
   start_time: Date,
   end_time: Date,
   seller: {first: String, last: String},
@@ -35,7 +38,7 @@ router.get('/testcreate', function(req, res, next) {
   // create a todo, information comes from AJAX request from Angular
   Sale.create({
     quantity: 1,
-    location: 'bplate',
+    location: 'BPlate',
     start_time: Date.now(),
     end_time: Date.now(),
   }, function(err, sale) {

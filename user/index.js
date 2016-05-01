@@ -1,15 +1,68 @@
 var express = require('express');
-var mongoose = require('mongoose');
-
+var passport = require('passport');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json({
-    hello: 'world'
-  })
+var User = require('./model');
+
+router.get('/', function(req,res) {
+  res.send("hasd");
+})
+
+
+router.get('/testcreate', function(req, res, next) {
+  // create a todo, information comes from AJAX request from Angular
+  User.create({
+    facebook :{
+      id: '19349',
+      token: '298943',
+      email: 'dragonballrulez@gmail.com',
+      name: 'Tan Yi Zu'
+    }
+  }, function(err, user) {
+      if (err)
+          res.send(err);
+
+      // get and return all the todos after you create another
+      User.find(function(err, users) {
+          if (err)
+              res.send(err)
+          res.json(users);
+      });
+  });
+})
+
+router.get('/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
+// handle the callback after facebook has authenticated the user
+router.get('/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect : '/profile',
+        failureRedirect : '/'
+    }));
+
+// route for logging out
+router.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
 });
 
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+
+/* GET users listing.
+router.get('/', function(req, res, next) {
+  res.json(
+
+  )
+});
+*/
 module.exports = router;
 
 /*
