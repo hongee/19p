@@ -28,7 +28,7 @@
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
   </head>
-  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <body ng-app="nineteen" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -42,7 +42,6 @@
                   <span class="light">19P</span>
               </a>
           </div>
-
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
               <ul class="nav navbar-nav">
@@ -53,23 +52,19 @@
                   <li>
                       <a class="page-scroll" href="#profile">Profile</a>
                   </li>
-
               </ul>
           </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-
-    
-
+    <div id="app" ng-view=""></div>
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; 19P 2016</p>
+            <p>Built with love in sunny Los Angeles.</p>
         </div>
     </footer>
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -83,7 +78,9 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/jquery-easing/jquery.easing.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
